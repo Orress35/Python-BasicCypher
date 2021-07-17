@@ -1,14 +1,17 @@
 import random
+import string
 
-old = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-new = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+old = list(string.printable)
+new = list(string.printable)
+
+key = input("key: ")
 
 a = input("mode (encrypt/decrypt): ")
 b = input("message: ")
 if a == "decrypt":
     decrypted = ""
     for c in b:
-        random.seed(25)
+        random.seed(key)
         random.shuffle(new)
         index = 0
         if c in new:
@@ -23,7 +26,7 @@ if a == "decrypt":
 else:
     encrypted = ""
     for c in b:
-        random.seed(25)
+        random.seed(key)
         random.shuffle(new)
         index = 0
         if c in old:
